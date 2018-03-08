@@ -246,7 +246,6 @@ type OrderByClause = SqlExpr OrderBy
 data LimitClause = Limit (Maybe Int64) (Maybe Int64)
 
 instance Semigroup LimitClause where
-  mempty = Limit mzero mzero
   Limit l1 o1 <> Limit l2 o2 =
     Limit (l2 `mplus` l1) (o2 `mplus` o1)
     -- More than one 'limit' or 'offset' is issued, we want to
